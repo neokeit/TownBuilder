@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using Ikc5.TypeLibrary;
-using TownBuilder.Converters;
+using TownBuilder.Helppers;
 
 namespace TownBuilder.Models
 {
@@ -18,8 +18,14 @@ namespace TownBuilder.Models
         public int Heigh { get; set; }
         public int Width { get; set; }
 
-        public Carta Carta { get; set; }
-		public Casilla(int heigh, int width)
+        private Carta? _carta;
+        public Carta? Carta
+        {
+            get => _carta;
+            set => SetProperty(ref _carta, value);
+        }
+
+        public Casilla(int heigh, int width)
 		{
 			this.SetDefaultValues();
             Heigh=heigh;

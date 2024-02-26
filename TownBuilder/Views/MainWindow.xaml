@@ -4,66 +4,106 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:userControlsViews="clr-namespace:TownBuilder.UserControlsViews"
+        xmlns:converters="clr-namespace:TownBuilder.Converters"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="MainWindow" Background="White"
         MinHeight="200" MinWidth="300"
-        Height="350" Width="525">
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal" Grid.Column="0">
-                <TextBlock Text="Dinero: " FontSize="15" FontWeight="Bold"/>
-                <TextBlock Text="{Binding Path=Dinero}" FontSize="15" FontWeight="Bold"/>
-                <TextBlock Text="$" FontSize="15" FontWeight="Bold"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Column="1">
-                <TextBlock Text="Cartas: x" FontSize="15" FontWeight="Bold"/>
-                <TextBlock Text="{Binding Path=CartasCount}" FontSize="15" FontWeight="Bold"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Column="2">
-                <TextBlock Text="Dia: " FontSize="15" FontWeight="Bold"/>
-                <TextBlock Text="{Binding Path=Dia}" FontSize="15" FontWeight="Bold"/>
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Row="1">
+        Height="500" Width="700">
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter
+            x:Key="BoolToHiddenConverter"
+            TrueValue="Visible" FalseValue="Collapsed" />
+    </Window.Resources>
+
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="50"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Column="1">
             <userControlsViews:DynamicGridView x:Name="DynamicGridView" DataContext="{Binding}"/>
         </DockPanel>
-        <Grid Grid.Column="0">
+        <Expander Grid.Column="0" ExpandDirection="Right">
+            <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="Historico" Margin="2"/>
-            <ListBox Grid.Row="1" ItemsSource="{Binding DineroHistorico}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                <ListBox Grid.Row="1" ItemsSource="{Binding DineroHistorico}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Expander>
 
-        </Grid>
-
-        <Grid Row="1" ColumnSpan="2">
+    <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="SaddleBrown" Height="30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="5,0" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Path=Dinero, StringFormat=N0}" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
+            <Image Source="/UserControlsViews/coin.png" Width="20" Margin="5,0"/>
+            <StackPanel Name="SpGanado"  Orientation="Horizontal" Margin="5,0" VerticalAlignment="Center" Visibility="{Binding ShowGanancia, 
+                      Converter={StaticResource BoolToHiddenConverter}}">
+                <TextBlock Text="+" FontSize="15" Foreground="Black" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Path=DineroGanado, StringFormat=N0}" FontSize="15" Foreground="Black" FontWeight="Bold"/>
+                <Image Source="/UserControlsViews/coin.png" Width="20" Margin="5,0"/>
+            </StackPanel>
+            <StackPanel Name="SpGastos" Orientation="Horizontal" Margin="5,0" VerticalAlignment="Center" Visibility="{Binding ShowGasto, 
+                      Converter={StaticResource BoolToHiddenConverter}}">
+                <TextBlock Text="-" FontSize="15" Foreground="Red" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Path=DineroGastado, StringFormat=N0}" FontSize="15" Foreground="Red" FontWeight="Bold"/>
+                <Image Source="/UserControlsViews/coin.png" Width="20" Margin="5,0"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5,0" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Path=TrabajadoresDisponibles}" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
+            <TextBlock Text="/" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
+            <TextBlock Text="{Binding Path=Trabajadores}" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
+            <Image Source="/Views/worker.png" Width="20" Margin="5,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="5,0" VerticalAlignment="Center">
+            <TextBlock Text="Cartas: x" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <TextBlock Text="{Binding Path=ListaCartas.Count}" Foreground="WhiteSmoke"  FontSize="15" FontWeight="Bold"/>
+            <Button Click="Deck_Click" Margin="5,0">
+                <Image Source="/Resources/Deck.png" Width="20" />
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="5,0" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Path=DiaActual}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <TextBlock Text=" - " FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <TextBlock Text="Dia " FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <TextBlock Text="{Binding Path=Dia}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="4" Margin="5,0" VerticalAlignment="Center">
+            <TextBlock Text="Impuestos en: " FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <TextBlock Text="{Binding Path=DiaCobro}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="5" Margin="5,0" VerticalAlignment="Center">
+            <TextBlock Text="Energia: " FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <TextBlock Text="{Binding Path=EnergiaRestante}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <TextBlock Text="/" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <TextBlock Text="{Binding Path=Energia}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
+            <Image Source="/UserControlsViews/energia.png" Width="20" Margin="5,0"/>
+        </StackPanel>
+    </Grid>
+        <Grid Row="2" ColumnSpan="2" Height="172" Background="SandyBrown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -73,14 +113,20 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="5" Height="20" Content="Carta 1" Click="Carta1_Click"/>
-            <Button Grid.Column="1" Margin="5" Height="20" Content="Carta 2" Click="Carta2_Click"/>
-            <Button Grid.Column="2" Margin="5" Height="20" Content="Carta 3" Click="Carta3_Click"/>
-            <Button Grid.Column="3" Margin="5" Height="20" Content="Carta 4" Click="Carta4_Click"/>
-            <Button Grid.Column="4" Margin="5" Height="20" Content="Carta 5" Click="Carta5_Click"/>
-            <Button Grid.Column="5" Margin="5" Height="20" Content="Carta 6" Click="Carta6_Click"/>
-            <Button Grid.Column="6" Margin="5" Height="20" Content="End Turn" Click="EndTurn_Click"/>
+            <StackPanel Grid.Column="0" >
+                <Button Margin="5" Content="Tutorial" Height="70" Width="150" Click="Tutorial_Click" FontSize="35" Foreground="White" BorderThickness="4" Background="SaddleBrown"/>
+                <ToggleButton Margin="5" Content="Destruir" Height="70" Width="150" IsChecked="{Binding ModoDestruir}" FontSize="35" Foreground="White" BorderThickness="4" Background="OrangeRed"/>
+            </StackPanel>
+            <ListBox Grid.Column="1" Grid.ColumnSpan="5" ItemContainerStyle="{DynamicResource lsCardDeck}" HorizontalAlignment="Center" 
+                     ItemsSource="{Binding CartasSeleccionables}" SelectedItem="{Binding Seleccionada}" HorizontalContentAlignment="Stretch">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" Orientation="Horizontal"  />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Button Grid.Column="6" Margin="5" Content="End Turn" Height="70" Click="EndTurn_Click" FontSize="45" Foreground="White" BorderThickness="4" Background="SaddleBrown"/>
         </Grid>
-    </Grid>
 </Grid>
+
 </Window>

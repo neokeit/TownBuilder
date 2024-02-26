@@ -6,10 +6,109 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\buy.png" />
+    <None Remove="Resources\cultivo.png" />
+    <None Remove="Resources\Deck.png" />
+    <None Remove="Resources\empty.png" />
+    <None Remove="UserControlsViews\build1.png" />
+    <None Remove="UserControlsViews\build2.png" />
+    <None Remove="UserControlsViews\build3.png" />
+    <None Remove="UserControlsViews\chicken.png" />
+    <None Remove="UserControlsViews\coin.png" />
+    <None Remove="UserControlsViews\cow.png" />
+    <None Remove="UserControlsViews\cultivo.png" />
+    <None Remove="UserControlsViews\cultivo2.png" />
+    <None Remove="UserControlsViews\Deck.png" />
+    <None Remove="UserControlsViews\energia.png" />
+    <None Remove="UserControlsViews\estrella.png" />
+    <None Remove="UserControlsViews\field.png" />
+    <None Remove="UserControlsViews\fieldBuy.png" />
+    <None Remove="UserControlsViews\fieldEmpty.png" />
+    <None Remove="UserControlsViews\maiz.png" />
+    <None Remove="UserControlsViews\patata.png" />
+    <None Remove="UserControlsViews\sheet.png" />
+    <None Remove="UserControlsViews\trigo.png" />
+    <None Remove="UserControlsViews\void.png" />
+    <None Remove="UserControlsViews\worker.png" />
+    <None Remove="Views\cultivo.png" />
+    <None Remove="Views\worker.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Ikc5.TypeLibrary" Version="1.0.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\buy.png" />
+    <Resource Include="Resources\cultivo.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Deck.png" />
+    <Resource Include="Resources\empty.png" />
+    <Resource Include="UserControlsViews\build1.png" />
+    <Resource Include="UserControlsViews\build2.png" />
+    <Resource Include="UserControlsViews\build3.png" />
+    <Resource Include="UserControlsViews\chicken.png" />
+    <Resource Include="UserControlsViews\coin.png" />
+    <Resource Include="UserControlsViews\cow.png" />
+    <Resource Include="UserControlsViews\Deck.png" />
+    <Resource Include="UserControlsViews\energia.png" />
+    <Resource Include="UserControlsViews\estrella.png" />
+    <Resource Include="UserControlsViews\field.png" />
+    <Resource Include="UserControlsViews\fieldBuy.png" />
+    <Resource Include="UserControlsViews\fieldEmpty.png" />
+    <Resource Include="UserControlsViews\maiz.png" />
+    <Resource Include="UserControlsViews\patata.png" />
+    <Resource Include="UserControlsViews\sheet.png" />
+    <Resource Include="UserControlsViews\trigo.png" />
+    <Resource Include="UserControlsViews\void.png" />
+    <Resource Include="UserControlsViews\worker.png" />
+    <Resource Include="Views\cultivo.png" />
+    <Resource Include="Views\worker.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MejorasView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ResurceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\card.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\destroy.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\farm.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\pay.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

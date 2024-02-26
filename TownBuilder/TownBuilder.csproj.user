@@ -7,7 +7,36 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\DeckView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\EndGameView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Tutorial.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MejorasView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ResurceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DeckView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\EndGameView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Tutorial.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

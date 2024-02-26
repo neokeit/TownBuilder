@@ -8,48 +8,42 @@ namespace TownBuilder.Views
 	/// </summary>
 	public partial class MainWindow
     {
-        private GameViewModel _vm = new GameViewModel(18,30);
+        private GameViewModel _vm = new(15,32);
 
         public MainWindow()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-            DataContext = _vm;
+            Initializer();
         }
 
-        private void Carta1_Click(object sender, RoutedEventArgs e)
+        private void Initializer()
         {
-            _vm.SeleccionarCarta(1);
-        }
-        
-        private void Carta2_Click(object sender, RoutedEventArgs e)
-        {
-            _vm.SeleccionarCarta(2);
-        }
-        
-        private void Carta3_Click(object sender, RoutedEventArgs e)
-        {
-            _vm.SeleccionarCarta(3);
-        }
-        
-        private void Carta4_Click(object sender, RoutedEventArgs e)
-        {
-            _vm.SeleccionarCarta(4);
-        }
-        
-        private void Carta5_Click(object sender, RoutedEventArgs e)
-        {
-            _vm.SeleccionarCarta(5);
-        }
-        
-        private void Carta6_Click(object sender, RoutedEventArgs e)
-        {
-            _vm.SeleccionarCarta(6);
+            _vm = new(15,32);
+            _vm.EndGame = EndGame_Click;
+            DataContext = _vm;
         }
 
         private void EndTurn_Click(object sender, RoutedEventArgs e)
         {
             _vm.FinalizarTurno();
+        }
+    
+        private void Tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            Tutorial view = new Tutorial();
+            view.Show();
+        }
+        private void EndGame_Click(object sender, RoutedEventArgs e)
+        {
+            EndGameView view = new EndGameView();
+            view.ShowDialog();
+            Initializer();
+        }  
+        private void Deck_Click(object sender, RoutedEventArgs e)
+        {
+            DeckView view = new DeckView(_vm.ListaCartas);
+            view.ShowDialog();
         }
     }
 }

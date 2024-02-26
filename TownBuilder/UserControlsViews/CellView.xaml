@@ -4,52 +4,206 @@
              mc:Ignorable="d"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="clr-namespace:WpfApplication.Converters"
-             d:DesignHeight="50" d:DesignWidth="50"
+             xmlns:converters="clr-namespace:TownBuilder.Converters"
              d:DataContext="{d:DesignInstance  IsDesignTimeCreatable=True}">
-
-  <UserControl.Resources>
-    <converters:ColorToBrushConverter x:Key="ColorToBrushConverter" />
-  </UserControl.Resources>
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter
+            x:Key="BoolToHiddenConverter"
+            TrueValue="Visible" FalseValue="Hidden" />
+    </UserControl.Resources>
     <Grid>
-        <Border BorderThickness="0" >
-        <Border.Style>
-        <Style>
-          <Setter Property="Border.Background" Value="DarkGray"/>
-          <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=Cell.State}" Value="0">
-              <Setter Property="Border.Background"
-                      Value="{Binding BloqueadoColor,
-                              RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},
-                              Converter={StaticResource ColorToBrushConverter},
-                              FallbackValue=#FF40FF40}"/>
-            </DataTrigger>
-              <DataTrigger Binding="{Binding Path=Cell.State}" Value="1">
-                  <Setter Property="Border.Background"
-                          Value="{Binding VacioColor,
-                              RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},
-                              Converter={StaticResource ColorToBrushConverter},
-                              FallbackValue=#FFFF4040}"/>
-              </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=Cell.State}" Value="2">
-              <Setter Property="Border.Background"
-                      Value="{Binding CompradoColor,
-                              RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},
-                              Converter={StaticResource ColorToBrushConverter},
-                              FallbackValue=#FFFF4040}"/>
-            </DataTrigger>
+        <Border>
+            <Border.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding ChangeCellStateCommand}"/>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ChangeCellStateCommand}"/>
+            </Border.InputBindings>
+            <Grid>
+                <Image Grid.Row="0" Margin="0,0">
+                    <Image.RenderTransform>
+                        <RotateTransform CenterX="30" CenterY="30" />
+                    </Image.RenderTransform>
+                    <Image.Style>
+                        <Style>
+                            <Setter Property="Image.Source" Value="/UserControlsViews/fieldEmpty.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Cell.State}" Value="0">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/fieldEmpty.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.State}" Value="1">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/fieldBuy.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.State}" Value="2">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/field.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding StartAnimation}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard TargetProperty="RenderTransform.Angle">
+                                                <DoubleAnimation From="-5" To="5" Duration="0:0:0.05" 
+                                                                 AutoReverse="True"
+                                                                 RepeatBehavior="3x"
+                                                                 FillBehavior="Stop" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="{Binding  Path=Importe}" FontSize="15" FontWeight="Bold"  FontFamily="Orbitron" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                    <Image Width="15" Height="15" VerticalAlignment="Center">
+                        <Image.Style>
+                            <Style>
+                                <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=Cell.State}" Value="0">
+                                        <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=Cell.State}" Value="1">
+                                        <Setter Property="Image.Source" Value="/UserControlsViews/coin.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=Cell.State}" Value="2">
+                                        <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </StackPanel>
+                <Image>
+                    <Image.RenderTransform>
+                        <RotateTransform CenterX="30" CenterY="30" />
+                    </Image.RenderTransform>
+                    <Image.Style>
+                        <Style>
+                            <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="0">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/trigo.png"/>
+                                    <Setter Property="Image.Margin" Value="0"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="1">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/patata.png"/>
+                                    <Setter Property="Image.Margin" Value="0"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="2">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/cow.png"/>
+                                    <Setter Property="Image.Margin" Value="10"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="3">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/chicken.png"/>
+                                    <Setter Property="Image.Margin" Value="10"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="4">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/sheet.png"/>
+                                    <Setter Property="Image.Margin" Value="10"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="5">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/build1.png"/>
+                                    <Setter Property="Image.Margin" Value="5"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="6">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/build2.png"/>
+                                    <Setter Property="Image.Margin" Value="5"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="7">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/build3.png"/>
+                                    <Setter Property="Image.Margin" Value="5"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="8">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/maiz.png"/>
+                                    <Setter Property="Image.Margin" Value="0"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding StartAnimation}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard TargetProperty="RenderTransform.Angle">
+                                                <DoubleAnimation From="-5" To="5" Duration="0:0:0.05" 
+                                                                 AutoReverse="True"
+                                                                 RepeatBehavior="3x"
+                                                                 FillBehavior="Stop" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image Width="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-2">
+                  <Image.RenderTransform>
+                      <RotateTransform CenterX="30" CenterY="30" />
+                  </Image.RenderTransform>
+                  <Image.Style>
+                      <Style>
+                          <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                          <Style.Triggers>
+                              <DataTrigger Binding="{Binding Path=Cell.Carta.Combo}" Value="true">
+                                  <Setter Property="Image.Source" Value="/UserControlsViews/estrella.png"/>
+                                  <Setter Property="Image.Margin" Value="0"/>
+                              </DataTrigger>
+                             
+                              <DataTrigger Binding="{Binding StarAnimation}" Value="True">
+                                  <DataTrigger.EnterActions>
+                                      <BeginStoryboard>
+                                          <Storyboard TargetProperty="RenderTransform.Angle">
+                                              <DoubleAnimation From="-5" To="5" Duration="0:0:0.05" 
+                                                               AutoReverse="True"
+                                                               RepeatBehavior="3x"
+                                                               FillBehavior="Stop" />
+                                          </Storyboard>
+                                      </BeginStoryboard>
+                                  </DataTrigger.EnterActions>
+                              </DataTrigger>
+                          </Style.Triggers>
+                      </Style>
+                  </Image.Style>
+              </Image>
 
-          </Style.Triggers>
-        </Style>
-      </Border.Style>
-        <Border.InputBindings>
-        <MouseBinding MouseAction="LeftClick" Command="{Binding ChangeCellStateCommand}"/>
-        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ChangeCellStateCommand}"/>
-      </Border.InputBindings>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                <TextBlock Text="{Binding Importe}"/>
-                <TextBlock Text="{Binding TipoDescripcion}"/>
-            </StackPanel>
-    </Border>
+                
+                <Image Width="20"  Margin="-2">
+                    <Image.RenderTransform>
+                        <RotateTransform CenterX="0" CenterY="0" />
+                    </Image.RenderTransform>
+                    <Image.Style>
+                        <Style>
+                            <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=ErrorEnergia}" Value="true">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/energia.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=ErrorTrabajadores}" Value="true">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/worker.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=ErrorNoCarta}" Value="true">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/Deck.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=ErrorNoDinero}" Value="true">
+                                    <Setter Property="Image.Source" Value="/UserControlsViews/coin.png"/>
+                                </DataTrigger>
+                             
+                                <DataTrigger Binding="{Binding StartAnimation}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard >
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 From="0"
+                                                                 To="1"
+                                                                 Duration="0:0:0.2"
+                                                                 AutoReverse="True"
+                                                                 RepeatBehavior="2x"/>
+                                            </Storyboard>
+                                            
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Grid>
+        </Border>
   </Grid>
 </UserControl>
