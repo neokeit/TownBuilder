@@ -12,19 +12,19 @@ namespace TownBuilder.Helppers
             {
                 new() { Nombre = "Leche", Importe = 5, Recurso = RecursosTipos.Leche },
                 new() { Nombre = "Lana", Importe = 10, Recurso = RecursosTipos.Lana},
-                new() { Nombre = "Huevos", Importe = 10, Recurso = RecursosTipos.Huevos},
-                new() { Nombre = "Trigo", Importe = 10, Recurso = RecursosTipos.Trigo},
-                new() { Nombre = "Maiz", Importe = 10, Recurso = RecursosTipos.Maiz},
-                new() { Nombre = "Patata", Importe = 10, Recurso = RecursosTipos.Patatas},
-                new() { Nombre = "Manzanas", Importe = 10, Recurso = RecursosTipos.Manzanas},
-                new() { Nombre = "Tomates", Importe = 10, Recurso = RecursosTipos.Tomates},
-                new() { Nombre = "Peras", Importe = 10, Recurso = RecursosTipos.Peras},
-                new() { Nombre = "Peces", Importe = 10, Recurso = RecursosTipos.Peces},
-                new() { Nombre = "Lino", Importe = 10, Recurso = RecursosTipos.Lino},
-                new() { Nombre = "Madera", Importe = 10, Recurso = RecursosTipos.Madera},
-                new() { Nombre = "Piedra", Importe = 10, Recurso = RecursosTipos.Piedra},
-                new() { Nombre = "Metal", Importe = 10, Recurso = RecursosTipos.Metal},
-                new() { Nombre = "Tela", Importe = 10, Recurso = RecursosTipos.Tela}
+                new() { Nombre = "Huevos", Importe = 12, Recurso = RecursosTipos.Huevos},
+                new() { Nombre = "Trigo", Importe = 8, Recurso = RecursosTipos.Trigo},
+                new() { Nombre = "Maiz", Importe = 8, Recurso = RecursosTipos.Maiz},
+                new() { Nombre = "Patata", Importe = 15, Recurso = RecursosTipos.Patatas},
+                new() { Nombre = "Manzanas", Importe = 12, Recurso = RecursosTipos.Manzanas},
+                new() { Nombre = "Tomates", Importe = 8, Recurso = RecursosTipos.Tomates},
+                new() { Nombre = "Peras", Importe = 12, Recurso = RecursosTipos.Peras},
+                new() { Nombre = "Peces", Importe = 15, Recurso = RecursosTipos.Peces},
+                new() { Nombre = "Lino", Importe = 15, Recurso = RecursosTipos.Lino},
+                new() { Nombre = "Madera", Importe = 12, Recurso = RecursosTipos.Madera},
+                new() { Nombre = "Piedra", Importe = 5, Recurso = RecursosTipos.Piedra},
+                new() { Nombre = "Metal", Importe = 30, Recurso = RecursosTipos.Metal},
+                new() { Nombre = "Tela", Importe = 20, Recurso = RecursosTipos.Tela}
             };
             return recursos;
         }

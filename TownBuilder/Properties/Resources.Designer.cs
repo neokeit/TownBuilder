@@ -59,45 +59,5 @@ namespace TownBuilder.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] buy {
-            get {
-                object obj = ResourceManager.GetObject("buy", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] cultivo {
-            get {
-                object obj = ResourceManager.GetObject("cultivo", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] empty {
-            get {
-                object obj = ResourceManager.GetObject("empty", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Field {
-            get {
-                object obj = ResourceManager.GetObject("Field", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

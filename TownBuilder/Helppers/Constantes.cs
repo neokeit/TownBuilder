@@ -10,6 +10,6 @@
         public static int Energia = 3;
         public static int DineroInicio = 100;
         public static int ImporteDestruir = 100;
-        public static int CartasMazo = 5;
+        public static int CartasMazo = 4;
     }
 }

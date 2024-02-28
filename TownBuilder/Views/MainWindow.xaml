@@ -14,7 +14,6 @@
             x:Key="BoolToHiddenConverter"
             TrueValue="Visible" FalseValue="Collapsed" />
     </Window.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -28,7 +27,7 @@
         <DockPanel Grid.Column="1">
             <userControlsViews:DynamicGridView x:Name="DynamicGridView" DataContext="{Binding}"/>
         </DockPanel>
-        <Expander Grid.Column="0" ExpandDirection="Right">
+        <Expander Grid.Row="0" Grid.Column="0" ExpandDirection="Right">
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -47,7 +46,7 @@
             </Grid>
         </Expander>
 
-    <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="SaddleBrown" Height="30">
+    <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Background="SaddleBrown" Height="30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -58,31 +57,31 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="5,0" VerticalAlignment="Center">
             <TextBlock Text="{Binding Path=Dinero, StringFormat=N0}" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
-            <Image Source="/UserControlsViews/coin.png" Width="20" Margin="5,0"/>
+            <Image Source="/Resources/Assets/Icons/coin.png" Width="20" Margin="5,0"/>
             <StackPanel Name="SpGanado"  Orientation="Horizontal" Margin="5,0" VerticalAlignment="Center" Visibility="{Binding ShowGanancia, 
                       Converter={StaticResource BoolToHiddenConverter}}">
                 <TextBlock Text="+" FontSize="15" Foreground="Black" FontWeight="Bold"/>
                 <TextBlock Text="{Binding Path=DineroGanado, StringFormat=N0}" FontSize="15" Foreground="Black" FontWeight="Bold"/>
-                <Image Source="/UserControlsViews/coin.png" Width="20" Margin="5,0"/>
+                <Image Source="/Resources/Assets/Icons/coin.png" Width="20" Margin="5,0"/>
             </StackPanel>
             <StackPanel Name="SpGastos" Orientation="Horizontal" Margin="5,0" VerticalAlignment="Center" Visibility="{Binding ShowGasto, 
                       Converter={StaticResource BoolToHiddenConverter}}">
                 <TextBlock Text="-" FontSize="15" Foreground="Red" FontWeight="Bold"/>
                 <TextBlock Text="{Binding Path=DineroGastado, StringFormat=N0}" FontSize="15" Foreground="Red" FontWeight="Bold"/>
-                <Image Source="/UserControlsViews/coin.png" Width="20" Margin="5,0"/>
+                <Image Source="/Resources/Assets/Icons/coin.png" Width="20" Margin="5,0"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5,0" VerticalAlignment="Center">
             <TextBlock Text="{Binding Path=TrabajadoresDisponibles}" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
             <TextBlock Text="/" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
             <TextBlock Text="{Binding Path=Trabajadores}" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
-            <Image Source="/Views/worker.png" Width="20" Margin="5,0"/>
+            <Image Source="/Resources/Assets/Icons/worker.png" Width="20" Margin="5,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="5,0" VerticalAlignment="Center">
             <TextBlock Text="Cartas: x" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
             <TextBlock Text="{Binding Path=ListaCartas.Count}" Foreground="WhiteSmoke"  FontSize="15" FontWeight="Bold"/>
             <Button Click="Deck_Click" Margin="5,0">
-                <Image Source="/Resources/Deck.png" Width="20" />
+                <Image Source="/Resources/Assets/Icons/Deck.png" Width="20" />
             </Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="5,0" VerticalAlignment="Center">
@@ -100,10 +99,10 @@
             <TextBlock Text="{Binding Path=EnergiaRestante}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
             <TextBlock Text="/" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
             <TextBlock Text="{Binding Path=Energia}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
-            <Image Source="/UserControlsViews/energia.png" Width="20" Margin="5,0"/>
+            <Image Source="/Resources/Assets/Icons/energia.png" Width="20" Margin="5,0"/>
         </StackPanel>
     </Grid>
-        <Grid Row="2" ColumnSpan="2" Height="172" Background="SandyBrown">
+        <Grid Grid.Column="0" Row="2" ColumnSpan="2" Height="172" Background="#FFB15507">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -114,10 +113,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" >
-                <Button Margin="5" Content="Tutorial" Height="70" Width="150" Click="Tutorial_Click" FontSize="35" Foreground="White" BorderThickness="4" Background="SaddleBrown"/>
-                <ToggleButton Margin="5" Content="Destruir" Height="70" Width="150" IsChecked="{Binding ModoDestruir}" FontSize="35" Foreground="White" BorderThickness="4" Background="OrangeRed"/>
+                <Button Margin="5" Content="Tutorial" Height="70" Width="150" Click="Tutorial_Click" FontSize="35" Foreground="White" BorderThickness="4" Background="SaddleBrown" Style="{DynamicResource RoundCorner}"/>
+                <ToggleButton Margin="5" Content="Destruir" Height="70" Width="150" IsChecked="{Binding ModoDestruir}" FontSize="35" Foreground="White" BorderThickness="4" Background="OrangeRed" />
             </StackPanel>
-            <ListBox Grid.Column="1" Grid.ColumnSpan="5" ItemContainerStyle="{DynamicResource lsCardDeck}" HorizontalAlignment="Center" 
+            <ListBox Grid.Column="1" Grid.ColumnSpan="5" ItemContainerStyle="{DynamicResource LsCardDeck}" HorizontalAlignment="Center" 
                      ItemsSource="{Binding CartasSeleccionables}" SelectedItem="{Binding Seleccionada}" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -125,8 +124,7 @@
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>
-            <Button Grid.Column="6" Margin="5" Content="End Turn" Height="70" Click="EndTurn_Click" FontSize="45" Foreground="White" BorderThickness="4" Background="SaddleBrown"/>
+            <Button Grid.Column="6" Margin="5" Content="End Turn" Height="70" Click="EndTurn_Click" FontSize="45" Foreground="White" BorderThickness="4" Background="SaddleBrown" Style="{DynamicResource RoundCorner}"/>
         </Grid>
-</Grid>
-
+    </Grid>
 </Window>

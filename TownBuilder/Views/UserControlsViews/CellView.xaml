@@ -4,13 +4,7 @@
              mc:Ignorable="d"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="clr-namespace:TownBuilder.Converters"
              d:DataContext="{d:DesignInstance  IsDesignTimeCreatable=True}">
-    <UserControl.Resources>
-        <converters:BoolToVisibilityConverter
-            x:Key="BoolToHiddenConverter"
-            TrueValue="Visible" FalseValue="Hidden" />
-    </UserControl.Resources>
     <Grid>
         <Border>
             <Border.InputBindings>
@@ -24,16 +18,16 @@
                     </Image.RenderTransform>
                     <Image.Style>
                         <Style>
-                            <Setter Property="Image.Source" Value="/UserControlsViews/fieldEmpty.png"/>
+                            <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldEmpty.png"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=Cell.State}" Value="0">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/fieldEmpty.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldEmpty.png"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.State}" Value="1">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/fieldBuy.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldBuy.png"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.State}" Value="2">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/field.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Fields/field.png"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding StartAnimation}" Value="True">
                                     <DataTrigger.EnterActions>
@@ -56,16 +50,16 @@
                     <Image Width="15" Height="15" VerticalAlignment="Center">
                         <Image.Style>
                             <Style>
-                                <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                                <Setter Property="Image.Source" Value="/Resources/Assets/void.png"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Path=Cell.State}" Value="0">
-                                        <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                                        <Setter Property="Image.Source" Value="/Resources/Assets/void.png"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Path=Cell.State}" Value="1">
-                                        <Setter Property="Image.Source" Value="/UserControlsViews/coin.png"/>
+                                        <Setter Property="Image.Source" Value="/Resources/Assets/Icons/coin.png"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Path=Cell.State}" Value="2">
-                                        <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                                        <Setter Property="Image.Source" Value="/Resources/Assets/void.png"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -78,42 +72,42 @@
                     </Image.RenderTransform>
                     <Image.Style>
                         <Style>
-                            <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                            <Setter Property="Image.Source" Value="/Resources/Assets/void.png"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="0">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/trigo.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/trigo.png"/>
                                     <Setter Property="Image.Margin" Value="0"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="1">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/patata.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/patata.png"/>
                                     <Setter Property="Image.Margin" Value="0"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="2">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/cow.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/cow.png"/>
                                     <Setter Property="Image.Margin" Value="10"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="3">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/chicken.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/chicken.png"/>
                                     <Setter Property="Image.Margin" Value="10"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="4">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/sheet.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/sheet.png"/>
                                     <Setter Property="Image.Margin" Value="10"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="5">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/build1.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/build1.png"/>
                                     <Setter Property="Image.Margin" Value="5"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="6">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/build2.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/build2.png"/>
                                     <Setter Property="Image.Margin" Value="5"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="7">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/build3.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/build3.png"/>
                                     <Setter Property="Image.Margin" Value="5"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=Cell.Carta.Image}" Value="8">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/maiz.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Cards/maiz.png"/>
                                     <Setter Property="Image.Margin" Value="0"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding StartAnimation}" Value="True">
@@ -138,10 +132,10 @@
                   </Image.RenderTransform>
                   <Image.Style>
                       <Style>
-                          <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                          <Setter Property="Image.Source" Value="/Resources/Assets/void.png"/>
                           <Style.Triggers>
                               <DataTrigger Binding="{Binding Path=Cell.Carta.Combo}" Value="true">
-                                  <Setter Property="Image.Source" Value="/UserControlsViews/estrella.png"/>
+                                  <Setter Property="Image.Source" Value="/Resources/Assets/Icons/estrella.png"/>
                                   <Setter Property="Image.Margin" Value="0"/>
                               </DataTrigger>
                              
@@ -169,33 +163,26 @@
                     </Image.RenderTransform>
                     <Image.Style>
                         <Style>
-                            <Setter Property="Image.Source" Value="/UserControlsViews/void.png"/>
+                            <Setter Property="Image.Source" Value="/Resources/Assets/void.png"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=ErrorEnergia}" Value="true">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/energia.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Icons/energia.png"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=ErrorTrabajadores}" Value="true">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/worker.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Icons/worker.png"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=ErrorNoCarta}" Value="true">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/Deck.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Icons/Deck.png"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=ErrorNoDinero}" Value="true">
-                                    <Setter Property="Image.Source" Value="/UserControlsViews/coin.png"/>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Icons/coin.png"/>
                                 </DataTrigger>
-                             
                                 <DataTrigger Binding="{Binding StartAnimation}" Value="True">
                                     <DataTrigger.EnterActions>
                                         <BeginStoryboard>
                                             <Storyboard >
-                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                                 From="0"
-                                                                 To="1"
-                                                                 Duration="0:0:0.2"
-                                                                 AutoReverse="True"
-                                                                 RepeatBehavior="2x"/>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.2" AutoReverse="True" RepeatBehavior="2x"/>
                                             </Storyboard>
-                                            
                                         </BeginStoryboard>
                                     </DataTrigger.EnterActions>
                                 </DataTrigger>

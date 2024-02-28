@@ -15,9 +15,9 @@ namespace TownBuilder.Helppers
         }
         private static void LoadSounds()
         {
-            Sounds[(int)SoundsTipos.Pay] = new SoundPlayer("Resources/pay.wav");
-            Sounds[(int)SoundsTipos.Card] = new SoundPlayer("Resources/card.wav");
-            Sounds[(int)SoundsTipos.Destruir] = new SoundPlayer("Resources/destroy.wav");
+            Sounds[(int)SoundsTipos.Pay] = new SoundPlayer("Resources/Sounds/pay.wav");
+            Sounds[(int)SoundsTipos.Card] = new SoundPlayer("Resources/Sounds/card.wav");
+            Sounds[(int)SoundsTipos.Destruir] = new SoundPlayer("Resources/Sounds/destroy.wav");
             foreach (var sound in Sounds)
             {
                 sound.Load();
@@ -26,7 +26,7 @@ namespace TownBuilder.Helppers
 
         private static void LoadMusic()
         {
-            BackgroundMusic.Open(new Uri("Resources/farm.wav", UriKind.Relative));
+            BackgroundMusic.Open(new Uri("Resources/Sounds/farm.wav", UriKind.Relative));
             BackgroundMusic.MediaEnded += BackgroundMusic_Ended;
             BackgroundMusic.Play();
         }

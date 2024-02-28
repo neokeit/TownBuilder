@@ -10,30 +10,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Assets\cultivo.png" />
+    <None Remove="Resources\Assets\Deck.png" />
+    <None Remove="Resources\Assets\Field.png" />
+    <None Remove="Resources\Assets\worker.png" />
     <None Remove="Resources\buy.png" />
     <None Remove="Resources\cultivo.png" />
     <None Remove="Resources\Deck.png" />
     <None Remove="Resources\empty.png" />
-    <None Remove="UserControlsViews\build1.png" />
-    <None Remove="UserControlsViews\build2.png" />
-    <None Remove="UserControlsViews\build3.png" />
-    <None Remove="UserControlsViews\chicken.png" />
-    <None Remove="UserControlsViews\coin.png" />
-    <None Remove="UserControlsViews\cow.png" />
-    <None Remove="UserControlsViews\cultivo.png" />
-    <None Remove="UserControlsViews\cultivo2.png" />
-    <None Remove="UserControlsViews\Deck.png" />
-    <None Remove="UserControlsViews\energia.png" />
-    <None Remove="UserControlsViews\estrella.png" />
-    <None Remove="UserControlsViews\field.png" />
-    <None Remove="UserControlsViews\fieldBuy.png" />
-    <None Remove="UserControlsViews\fieldEmpty.png" />
-    <None Remove="UserControlsViews\maiz.png" />
-    <None Remove="UserControlsViews\patata.png" />
-    <None Remove="UserControlsViews\sheet.png" />
-    <None Remove="UserControlsViews\trigo.png" />
-    <None Remove="UserControlsViews\void.png" />
-    <None Remove="UserControlsViews\worker.png" />
+    <None Remove="Resources\fieldEmpty.png" />
+    <None Remove="Views\UserControlsViews\build1.png" />
+    <None Remove="Views\UserControlsViews\build2.png" />
+    <None Remove="Views\UserControlsViews\build3.png" />
+    <None Remove="Views\UserControlsViews\chicken.png" />
+    <None Remove="Views\UserControlsViews\coin.png" />
+    <None Remove="Views\UserControlsViews\cow.png" />
+    <None Remove="Views\UserControlsViews\cultivo.png" />
+    <None Remove="Views\UserControlsViews\cultivo2.png" />
+    <None Remove="Views\UserControlsViews\Deck.png" />
+    <None Remove="Views\UserControlsViews\energia.png" />
+    <None Remove="Views\UserControlsViews\estrella.png" />
+    <None Remove="Views\UserControlsViews\field.png" />
+    <None Remove="Views\UserControlsViews\fieldBuy.png" />
+    <None Remove="Views\UserControlsViews\maiz.png" />
+    <None Remove="Views\UserControlsViews\patata.png" />
+    <None Remove="Views\UserControlsViews\sheet.png" />
+    <None Remove="Views\UserControlsViews\trigo.png" />
+    <None Remove="Views\UserControlsViews\void.png" />
+    <None Remove="Views\UserControlsViews\worker.png" />
     <None Remove="Views\cultivo.png" />
     <None Remove="Views\worker.png" />
   </ItemGroup>
@@ -47,32 +51,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\buy.png" />
-    <Resource Include="Resources\cultivo.png">
+    <Resource Include="Resources\Assets\Cards\cultivo.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Deck.png" />
-    <Resource Include="Resources\empty.png" />
-    <Resource Include="UserControlsViews\build1.png" />
-    <Resource Include="UserControlsViews\build2.png" />
-    <Resource Include="UserControlsViews\build3.png" />
-    <Resource Include="UserControlsViews\chicken.png" />
-    <Resource Include="UserControlsViews\coin.png" />
-    <Resource Include="UserControlsViews\cow.png" />
-    <Resource Include="UserControlsViews\Deck.png" />
-    <Resource Include="UserControlsViews\energia.png" />
-    <Resource Include="UserControlsViews\estrella.png" />
-    <Resource Include="UserControlsViews\field.png" />
-    <Resource Include="UserControlsViews\fieldBuy.png" />
-    <Resource Include="UserControlsViews\fieldEmpty.png" />
-    <Resource Include="UserControlsViews\maiz.png" />
-    <Resource Include="UserControlsViews\patata.png" />
-    <Resource Include="UserControlsViews\sheet.png" />
-    <Resource Include="UserControlsViews\trigo.png" />
-    <Resource Include="UserControlsViews\void.png" />
-    <Resource Include="UserControlsViews\worker.png" />
-    <Resource Include="Views\cultivo.png" />
-    <Resource Include="Views\worker.png" />
+    <Resource Include="Resources\Assets\Icons\Deck.png" />
+    <Resource Include="Resources\Assets\Fields\Field.png" />
+    <Resource Include="Resources\Assets\Fields\fieldEmpty.png" />
+    <Resource Include="Resources\Assets\Cards\build1.png" />
+    <Resource Include="Resources\Assets\Cards\build2.png" />
+    <Resource Include="Resources\Assets\Cards\build3.png" />
+    <Resource Include="Resources\Assets\Cards\chicken.png" />
+    <Resource Include="Resources\Assets\Icons\coin.png" />
+    <Resource Include="Resources\Assets\Cards\cow.png" />
+    <Resource Include="Resources\Assets\Icons\energia.png" />
+    <Resource Include="Resources\Assets\Icons\estrella.png" />
+    <Resource Include="Resources\Assets\Icons\worker.png" />
+    <Resource Include="Resources\Assets\Fields\fieldBuy.png" />
+    <Resource Include="Resources\Assets\Cards\maiz.png" />
+    <Resource Include="Resources\Assets\Cards\patata.png" />
+    <Resource Include="Resources\Assets\Cards\sheet.png" />
+    <Resource Include="Resources\Assets\Cards\trigo.png" />
+    <Resource Include="Resources\Assets\void.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -97,16 +96,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\card.wav">
+    <None Update="Resources\Sounds\card.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\destroy.wav">
+    <None Update="Resources\Sounds\destroy.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\farm.wav">
+    <None Update="Resources\Sounds\farm.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\pay.wav">
+    <None Update="Resources\Sounds\pay.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

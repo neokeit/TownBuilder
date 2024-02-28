@@ -7,7 +7,7 @@
         Title="DeckView" Height="550" Width="670">
     <Grid>
         <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ItemContainerStyle="{DynamicResource lsCardDeck}" 
+                 ItemContainerStyle="{DynamicResource LsCardDeck}" 
                  ItemsSource="{Binding ListaCartas}" >
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

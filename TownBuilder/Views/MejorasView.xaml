@@ -23,7 +23,7 @@
                 <Button Grid.Column="2" Margin="10" Click="Destruir_Click">Destruir</Button>
             </Grid>
             <ListBox Name="lsNuevasCartas" Grid.Row="1" Visibility="Collapsed" 
-                     ItemContainerStyle="{DynamicResource lsCardDeck}" SelectedItem="{Binding Añadir}" 
+                     ItemContainerStyle="{DynamicResource LsCardDeck}" SelectedItem="{Binding Añadir}" 
                      ItemsSource="{Binding ListaCartasNuevas}" >
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -32,7 +32,7 @@
             </ListBox.ItemsPanel>
         </ListBox>
         <ListBox Name="lsMejoras" Grid.Row="2" Visibility="Collapsed"
-                 ItemContainerStyle="{DynamicResource lsCardDeck}" SelectedItem="{Binding Mejora}" 
+                 ItemContainerStyle="{DynamicResource LsCardDeck}" SelectedItem="{Binding Mejora}" 
                  ItemsSource="{Binding ListaMejoras}" >
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -41,7 +41,7 @@
             </ListBox.ItemsPanel>
         </ListBox>
         <ListBox Name="lsDestruirCartas" Grid.Row="3" Visibility="Collapsed"
-                 ItemContainerStyle="{DynamicResource lsCardDeck}" SelectedItem="{Binding Eliminar}" 
+                 ItemContainerStyle="{DynamicResource LsCardDeck}" SelectedItem="{Binding Eliminar}" 
                  ItemsSource="{Binding DestruirCarta}" >
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

@@ -80,7 +80,7 @@ namespace TownBuilder.ViewModels
             set => SetProperty(ref _dineroGastado, value);
         }        
         
-        private string _diaActual;
+        private string _diaActual="Lunes";
         public string DiaActual
         {
             get => _diaActual;
@@ -112,7 +112,8 @@ namespace TownBuilder.ViewModels
             get => _trabajadoresDisponibles;
             set => SetProperty(ref _trabajadoresDisponibles, value);
         }
-        
+
+        private int _diaSemana = 1;
         private int _dia = 1;
         public int Dia
         {
@@ -285,12 +286,15 @@ namespace TownBuilder.ViewModels
         public void FinalizarTurno()
         {
             Dia++;
-            DiaActual = "Lunes";
+            _diaSemana++;
+            if (_diaSemana == 8) _diaSemana = 1;
+            DiaActual = DiasHelper.GetDiaSemanaTexto (_diaSemana);
             EnergiaRestante = Energia;
             MostrarVentas();
             CobrarImpuestos();
             CartasSeleccionables=DeckHelpper.CartasRandom(ListaCartas);
         }
+
 
         private void MostrarVentas()
         {
@@ -354,7 +358,7 @@ namespace TownBuilder.ViewModels
             Dinero = dineroRestate;
             ShowGanancia = false;
             ShowGasto = true;
-            if (Dinero <= 0)
+            if (Dinero < 0)
             {
                 GameOver();
             }
@@ -362,7 +366,7 @@ namespace TownBuilder.ViewModels
 
         public int AplicarCarta(int cellHeigh, int cellWidth)
         {
-            if (Seleccionada!=null && EnergiaRestante>0 && Dinero>Seleccionada.Importe)
+            if (Seleccionada!=null && EnergiaRestante>0 && Dinero>=Seleccionada.Importe)
             {
                 if (Seleccionada.Tipo != CartasTipos.Casas && TrabajadoresDisponibles == 0)
                 {
