@@ -199,12 +199,19 @@ namespace TownBuilder.ViewModels
         private void CreateCells()
         {
             Cells = new ObservableCollection<ObservableCollection<CasillasViewModel>>();
+            var random = new Random();
             for (var posRow = 0; posRow < GridHeight; posRow++)
             {
                 var row = new ObservableCollection<CasillasViewModel>();
                 for (var posCol = 0; posCol < GridWidth; posCol++)
                 {
-                    var casillasViewModel = new CasillasViewModel(new Casilla(posRow, posCol), this);
+                    // Replace with valid enum values and random logic
+                    // If you want "Hierba" to be the default empty type, and "Piedra" as the alternative:
+                    var probabilidadVacio = 70; // You should move this to Constantes.ProbabilidadVacio if possible.
+                    var probabilidadPiedra = 90; // You should move this to Constantes.ProbabilidadVacio if possible.
+                    var randomValue = random.Next(0, 100);
+                    var valueEmpty = randomValue < probabilidadVacio ? CasillasEmptyTypes.Hierba : (randomValue < probabilidadPiedra ?CasillasEmptyTypes.Tronco : CasillasEmptyTypes.Piedra);
+                    var casillasViewModel = new CasillasViewModel(new Casilla(posRow, posCol, valueEmpty), this);
                     row.Add(casillasViewModel);
                 }
                 Cells.Add(row);

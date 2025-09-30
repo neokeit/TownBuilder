@@ -5,7 +5,7 @@ using TownBuilder.Helppers;
 namespace TownBuilder.Models
 {
 	public class Casilla : BaseNotifyPropertyChanged
-	{
+    {
         private CasillasEstados _state;
 
         [DefaultValue(0)]
@@ -14,7 +14,16 @@ namespace TownBuilder.Models
             get => _state;
             set => SetProperty(ref _state, value);
         }
-        
+
+        private CasillasEmptyTypes _emptyType;
+        [DefaultValue(0)]
+        public CasillasEmptyTypes EmptyType
+        {
+            get => _emptyType;
+            set => SetProperty(ref _emptyType, value);
+        }
+              
+
         public int Heigh { get; set; }
         public int Width { get; set; }
 
@@ -25,11 +34,12 @@ namespace TownBuilder.Models
             set => SetProperty(ref _carta, value);
         }
 
-        public Casilla(int heigh, int width)
+        public Casilla(int heigh, int width, CasillasEmptyTypes emptyValue)
 		{
 			this.SetDefaultValues();
             Heigh=heigh;
             Width=width;
-		}
+            _emptyType = emptyValue;
+        }
     }
 }

@@ -6,6 +6,12 @@
         Vacio,
         Comprado
     }
+    public enum CasillasEmptyTypes
+    {
+        Hierba,
+        Tronco,
+        Piedra
+    }
     public enum SoundsTipos
     {
         Pay,

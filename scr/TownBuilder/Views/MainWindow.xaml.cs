@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using TownBuilder.Helppers;
+using TownBuilder.Models;
 using TownBuilder.ViewModels;
 
 namespace TownBuilder.Views
@@ -8,18 +10,19 @@ namespace TownBuilder.Views
 	/// </summary>
 	public partial class MainWindow
     {
-        private GameViewModel _vm = new(15,32);
-
+        private GameViewModel _vm;
+        private ConfigModel _config;
         public MainWindow()
         {
+            _config= ConfigHelper.Load();
             InitializeComponent();
             WindowState = WindowState.Maximized;
             Initializer();
-        }
+        }       
 
         private void Initializer()
         {
-            _vm = new(15,32);
+            _vm = new(_config.Rows, _config.Columns);
             _vm.EndGame = EndGame_Click;
             DataContext = _vm;
         }

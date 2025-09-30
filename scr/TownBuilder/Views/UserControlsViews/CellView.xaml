@@ -12,7 +12,8 @@
                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ChangeCellStateCommand}"/>
             </Border.InputBindings>
             <Grid>
-                <Image Grid.Row="0" Margin="0,0">
+                <Image Grid.Row="0" Margin="-4" Source="/Resources/Assets/Fields/fieldBuy.png"/>
+                <Image Grid.Row="0" Margin="-4">
                     <Image.RenderTransform>
                         <RotateTransform CenterX="30" CenterY="30" />
                     </Image.RenderTransform>
@@ -20,9 +21,28 @@
                         <Style>
                             <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldEmpty.png"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=Cell.State}" Value="0">
-                                    <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldEmpty.png"/>
-                                </DataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=Cell.State}" Value="0" />
+                                        <Condition Binding="{Binding Path=Cell.EmptyType}" Value="0" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldEmpty_type0.png"/>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=Cell.State}" Value="0" />
+                                        <Condition Binding="{Binding Path=Cell.EmptyType}" Value="1" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldEmpty_type1.png"/>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=Cell.State}" Value="0" />
+                                        <Condition Binding="{Binding Path=Cell.EmptyType}" Value="2" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldEmpty_type2.png"/>
+                                </MultiDataTrigger>
+
                                 <DataTrigger Binding="{Binding Path=Cell.State}" Value="1">
                                     <Setter Property="Image.Source" Value="/Resources/Assets/Fields/fieldBuy.png"/>
                                 </DataTrigger>
