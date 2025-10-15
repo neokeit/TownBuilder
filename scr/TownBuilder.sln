@@ -5,6 +5,10 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownBuilder", "TownBuilder\TownBuilder.csproj", "{107EBEC1-844C-4846-A64A-FD4F544E078D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownBuilder.Controllers", "TownBuilder.Controllers\TownBuilder.Controllers.csproj", "{52F1F154-FBCA-49A5-8700-F1B61E2509C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownBuilder.Core", "TownBuilder.Core\TownBuilder.Core.csproj", "{267504D6-72FE-4D15-A13E-DC7355BA2E0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{107EBEC1-844C-4846-A64A-FD4F544E078D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{107EBEC1-844C-4846-A64A-FD4F544E078D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{107EBEC1-844C-4846-A64A-FD4F544E078D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F1F154-FBCA-49A5-8700-F1B61E2509C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F1F154-FBCA-49A5-8700-F1B61E2509C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F1F154-FBCA-49A5-8700-F1B61E2509C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F1F154-FBCA-49A5-8700-F1B61E2509C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{267504D6-72FE-4D15-A13E-DC7355BA2E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267504D6-72FE-4D15-A13E-DC7355BA2E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267504D6-72FE-4D15-A13E-DC7355BA2E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267504D6-72FE-4D15-A13E-DC7355BA2E0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

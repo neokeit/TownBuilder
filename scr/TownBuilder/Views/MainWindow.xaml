@@ -10,9 +10,8 @@
         MinHeight="200" MinWidth="300"
         Height="500" Width="700">
     <Window.Resources>
-        <converters:BoolToVisibilityConverter
-            x:Key="BoolToHiddenConverter"
-            TrueValue="Visible" FalseValue="Collapsed" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Collapsed" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToInverseHiddenConverter" TrueValue="Collapsed" FalseValue="Visible" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -52,9 +51,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="5,0" VerticalAlignment="Center">
             <TextBlock Text="{Binding Path=Dinero, StringFormat=N0}" FontSize="15" Foreground="WhiteSmoke" FontWeight="Bold"/>
             <Image Source="/Resources/Assets/Icons/coin.png" Width="20" Margin="5,0"/>
@@ -99,9 +99,20 @@
             <TextBlock Text="{Binding Path=EnergiaRestante}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
             <TextBlock Text="/" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
             <TextBlock Text="{Binding Path=Energia}" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" />
-            <Image Source="/Resources/Assets/Icons/energia.png" Width="20" Margin="5,0"/>
-        </StackPanel>
-    </Grid>
+                <Image Source="/Resources/Assets/Icons/energia.png" Width="20" Margin="5,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="6" Margin="5,0" VerticalAlignment="Center">
+                <Button Click="Config_Click">
+                    <Image Source="/Resources/Assets/Icons/Sytem/config.png" Width="20"></Image>
+                </Button>
+                <Button Click="Sound_Click">
+                    <StackPanel>
+                        <Image Visibility="{Binding SoundActive, Converter={StaticResource BoolToHiddenConverter}}" Source="/Resources/Assets/Icons/Sytem/sound-on.png" Width="20"></Image>
+                        <Image Visibility="{Binding SoundActive, Converter={StaticResource BoolToInverseHiddenConverter}}"  Source="/Resources/Assets/Icons/Sytem/sound-off.png" Width="20"></Image>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
         <Grid Grid.Column="0" Row="2" ColumnSpan="2" Height="172" Background="#FFB15507">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

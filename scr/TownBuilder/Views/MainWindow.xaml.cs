@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using TownBuilder.Helppers;
 using TownBuilder.Models;
 using TownBuilder.ViewModels;
@@ -44,6 +44,22 @@ namespace TownBuilder.Views
             Initializer();
         }  
         private void Deck_Click(object sender, RoutedEventArgs e)
+        {
+            DeckView view = new DeckView(_vm.ListaCartas);
+            view.ShowDialog();
+        }
+        private void Sound_Click(object sender, RoutedEventArgs e)
+        {
+            if (_vm.SoundActive)
+            {
+                _vm.SoundOff();
+            }
+            else
+            {
+                _vm.SoundOn();
+            }
+        }
+        private void Config_Click(object sender, RoutedEventArgs e)
         {
             DeckView view = new DeckView(_vm.ListaCartas);
             view.ShowDialog();

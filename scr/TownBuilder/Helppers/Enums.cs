@@ -12,12 +12,6 @@
         Tronco,
         Piedra
     }
-    public enum SoundsTipos
-    {
-        Pay,
-        Card,
-        Destruir
-    }
     public enum CartasImages
     {
         Trigo,

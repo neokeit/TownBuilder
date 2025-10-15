@@ -16,6 +16,9 @@
     <None Remove="Resources\Assets\Fields\fieldEmpty_type0.png" />
     <None Remove="Resources\Assets\Fields\fieldEmpty_type1.png" />
     <None Remove="Resources\Assets\Fields\fieldEmpty_type2.png" />
+    <None Remove="Resources\Assets\Icons\Sytem\config.png" />
+    <None Remove="Resources\Assets\Icons\Sytem\sound-off.png" />
+    <None Remove="Resources\Assets\Icons\Sytem\sound-on.png" />
     <None Remove="Resources\Assets\worker.png" />
     <None Remove="Resources\buy.png" />
     <None Remove="Resources\cultivo.png" />
@@ -54,6 +57,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TownBuilder.Controllers\TownBuilder.Controllers.csproj" />
+    <ProjectReference Include="..\TownBuilder.Core\TownBuilder.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Assets\Cards\cultivo.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
@@ -71,6 +79,9 @@
     <Resource Include="Resources\Assets\Cards\cow.png" />
     <Resource Include="Resources\Assets\Icons\energia.png" />
     <Resource Include="Resources\Assets\Icons\estrella.png" />
+    <Resource Include="Resources\Assets\Icons\Sytem\config.png" />
+    <Resource Include="Resources\Assets\Icons\Sytem\sound-off.png" />
+    <Resource Include="Resources\Assets\Icons\Sytem\sound-on.png" />
     <Resource Include="Resources\Assets\Icons\worker.png" />
     <Resource Include="Resources\Assets\Fields\fieldBuy.png" />
     <Resource Include="Resources\Assets\Cards\maiz.png" />

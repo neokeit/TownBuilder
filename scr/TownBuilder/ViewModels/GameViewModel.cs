@@ -1,8 +1,9 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
 using Ikc5.TypeLibrary;
+using TownBuilder.Core;
 using TownBuilder.Helppers;
 using TownBuilder.Models;
 using TownBuilder.Views;
@@ -186,14 +187,19 @@ namespace TownBuilder.ViewModels
             get => _showGasto;
             set => SetProperty(ref _showGasto, value);
         }
-        public GameViewModel(int height, int width)
+        private bool _soundActive = true;
+        public bool SoundActive
+        {
+            get => _soundActive;
+            set => SetProperty(ref _soundActive, value);
+        }
         {
             this.SetDefaultValues();
             GridHeight = height;
             GridWidth = width;
             CreateCells();
             CreateDeck();
-            SoundHelper.Load();
+            SoundController.Load();
         }
 
         private void CreateCells()
@@ -275,7 +281,7 @@ namespace TownBuilder.ViewModels
                 Cells[cellHeigh][cellWidth].Cell.State = CasillasEstados.Comprado;
                 Cells[cellHeigh][cellWidth].Importe = "";
                 Recalcule(cellHeigh, cellWidth);
-                SoundHelper.Play(SoundsTipos.Pay);
+                SoundController.Play(SoundsTipos.Pay);
             }
             else
             {
@@ -389,7 +395,7 @@ namespace TownBuilder.ViewModels
                 }
                 CartasSeleccionables.Remove(Seleccionada);
                 Seleccionada = null;
-                SoundHelper.Play(SoundsTipos.Card);
+                SoundController.Play(SoundsTipos.Card);
                 EnergiaRestante--;
                 CheckCombo( cellHeigh,  cellWidth);
                 CalculeResources();
@@ -579,12 +585,24 @@ namespace TownBuilder.ViewModels
             Cobrar(Constantes.ImporteDestruir);
             
             Cells[cellHeigh][cellWidth].Cell.Carta = null;
-            SoundHelper.Play(SoundsTipos.Destruir);
+            SoundController.Play(SoundsTipos.Destruir);
             CalculeResources();
             if (cartaAEliminar != null)
             {
                 EliminarCombo(cellHeigh, cellWidth, cartaAEliminar!.Recurso);
             }
+        }
+
+        internal void SoundOff()
+        {
+            SoundActive = false;
+            SoundController.Pause();
+        }
+
+        internal void SoundOn()
+        {
+            SoundActive = true;
+            SoundController.Replay();
         }
     }
 }
