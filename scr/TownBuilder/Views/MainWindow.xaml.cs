@@ -1,4 +1,4 @@
-using System.Windows;
+﻿using System.Windows;
 using TownBuilder.Helppers;
 using TownBuilder.Models;
 using TownBuilder.ViewModels;
@@ -22,7 +22,7 @@ namespace TownBuilder.Views
 
         private void Initializer()
         {
-            _vm = new(_config.Rows, _config.Columns);
+            _vm = new(_config);
             _vm.EndGame = EndGame_Click;
             DataContext = _vm;
         }

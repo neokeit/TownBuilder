@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
@@ -193,10 +193,11 @@ namespace TownBuilder.ViewModels
             get => _soundActive;
             set => SetProperty(ref _soundActive, value);
         }
+        public GameViewModel(ConfigModel config)
         {
             this.SetDefaultValues();
-            GridHeight = height;
-            GridWidth = width;
+            GridHeight = config.Rows;
+            GridWidth = config.Columns;
             CreateCells();
             CreateDeck();
             SoundController.Load();

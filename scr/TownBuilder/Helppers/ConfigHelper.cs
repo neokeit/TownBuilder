@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
 using System.Windows;
 using TownBuilder.Models;
@@ -8,6 +7,7 @@ namespace TownBuilder.Helppers
 {
     public class ConfigHelper
     {
+        private static string configFilePath = "..\\..\\..\\..\\..\\General-Config\\config.json";
         private static ConfigModel DefaultConfig()
         {
             return new ConfigModel { Rows = 25, Columns = 45 };
@@ -18,7 +18,7 @@ namespace TownBuilder.Helppers
             ConfigModel config = DefaultConfig();
             try
             {
-                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configFilePath);
                 string json = File.ReadAllText(path);
                 config = JsonSerializer.Deserialize<ConfigModel>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? DefaultConfig();
             }
@@ -34,7 +34,7 @@ namespace TownBuilder.Helppers
             try
             {
                 var jsonStr = JsonSerializer.Serialize(config);
-                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configFilePath);
                 File.WriteAllText("config.json", jsonStr);
             }
             catch (Exception ex)
