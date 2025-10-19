@@ -13,15 +13,15 @@ namespace TownBuilder.ViewModels
     public class GameViewModel : BaseNotifyPropertyChanged
     {
         private ObservableCollection<ObservableCollection<CasillasViewModel>> _cells = null!;
-        
+
         private int _gridWidth;
         private int _gridHeight;
-        private int _level=1;
+        private int _level = 1;
 
         private Color _bloqueadoColor;
         private Color _vacioColor;
         private Color _compradoColor;
-        
+
         private Carta? _seleccionada;
         public Carta? Seleccionada
         {
@@ -42,7 +42,7 @@ namespace TownBuilder.ViewModels
             get => _vacioColor;
             set => SetProperty(ref _vacioColor, value);
         }
-        
+
         [DefaultValue(typeof(Color), "#FFCD853F")]
         public Color CompradoColor
         {
@@ -61,7 +61,7 @@ namespace TownBuilder.ViewModels
             get => _gridHeight;
             set => SetProperty(ref _gridHeight, value);
         }
-        
+
         private int _dinero = Constantes.DineroInicio;
         public int Dinero
         {
@@ -79,9 +79,9 @@ namespace TownBuilder.ViewModels
         {
             get => _dineroGastado;
             set => SetProperty(ref _dineroGastado, value);
-        }        
-        
-        private string _diaActual="Lunes";
+        }
+
+        private string _diaActual = "Lunes";
         public string DiaActual
         {
             get => _diaActual;
@@ -133,7 +133,7 @@ namespace TownBuilder.ViewModels
             get => _dineroHistorico;
             set => SetProperty(ref _dineroHistorico, value);
         }
-        
+
         private ObservableCollection<Carta?> _cartasSeleccionables = new();
         public ObservableCollection<Carta?> CartasSeleccionables
         {
@@ -158,7 +158,7 @@ namespace TownBuilder.ViewModels
             get => _recursosValores;
             set => SetProperty(ref _recursosValores, value);
         }
-        
+
         private ObservableCollection<Carta?> _listaMejoras = new();
         public ObservableCollection<Carta?> ListaMejoras
         {
@@ -187,12 +187,12 @@ namespace TownBuilder.ViewModels
             get => _showGasto;
             set => SetProperty(ref _showGasto, value);
         }
-        private bool _soundActive = true;
-        public bool SoundActive
+        public bool Mute
         {
-            get => _soundActive;
-            set => SetProperty(ref _soundActive, value);
+            get => SoundController.Mute;
+            set => SetProperty(ref SoundController.Mute, value);
         }
+        private SoundController SoundController;
         public GameViewModel(ConfigModel config)
         {
             this.SetDefaultValues();
@@ -200,7 +200,7 @@ namespace TownBuilder.ViewModels
             GridWidth = config.Columns;
             CreateCells();
             CreateDeck();
-            SoundController.Load();
+            SoundController = new SoundController();
         }
 
         private void CreateCells()
@@ -594,16 +594,18 @@ namespace TownBuilder.ViewModels
             }
         }
 
-        internal void SoundOff()
+        internal void SoundChange()
         {
-            SoundActive = false;
-            SoundController.Pause();
-        }
-
-        internal void SoundOn()
-        {
-            SoundActive = true;
-            SoundController.Replay();
+            if (!SoundController.Mute)
+            {
+                SoundController.Mute = true;
+                SoundController.PauseMusic();
+            }
+            else
+            {
+                SoundController.Mute = false;
+                SoundController.PlayMusic();
+            }
         }
     }
 }

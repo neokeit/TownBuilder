@@ -107,8 +107,8 @@
                 </Button>
                 <Button Click="Sound_Click">
                     <StackPanel>
-                        <Image Visibility="{Binding SoundActive, Converter={StaticResource BoolToHiddenConverter}}" Source="/Resources/Assets/Icons/Sytem/sound-on.png" Width="20"></Image>
-                        <Image Visibility="{Binding SoundActive, Converter={StaticResource BoolToInverseHiddenConverter}}"  Source="/Resources/Assets/Icons/Sytem/sound-off.png" Width="20"></Image>
+                        <Image Visibility="{Binding SoundActive, Converter={StaticResource BoolToInverseHiddenConverter}}" Source="/Resources/Assets/Icons/Sytem/sound-on.png" Width="20"></Image>
+                        <Image Visibility="{Binding SoundActive, Converter={StaticResource BoolToHiddenConverter}}"  Source="/Resources/Assets/Icons/Sytem/sound-off.png" Width="20"></Image>
                     </StackPanel>
                 </Button>
             </StackPanel>

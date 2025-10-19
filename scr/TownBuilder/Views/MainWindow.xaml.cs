@@ -50,14 +50,7 @@ namespace TownBuilder.Views
         }
         private void Sound_Click(object sender, RoutedEventArgs e)
         {
-            if (_vm.SoundActive)
-            {
-                _vm.SoundOff();
-            }
-            else
-            {
-                _vm.SoundOn();
-            }
+            _vm.SoundChange();
         }
         private void Config_Click(object sender, RoutedEventArgs e)
         {

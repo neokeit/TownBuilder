@@ -1,15 +1,24 @@
 ﻿using System.Media;
-using System.Windows.Media;
 using TownBuilder.Core;
+using System.Windows.Media;
 
 namespace TownBuilder.Helppers
 {
-    public static class SoundController
+    public class SoundController
     {
-        internal static MediaPlayer BackgroundMusic = new();
-        internal static SoundPlayer[] Sounds = new SoundPlayer[3];
-        internal static bool Mute = false;
-        private static void LoadSounds()
+        #region propierty
+        private MediaPlayer BackgroundMusic = new();
+        private SoundPlayer[] Sounds = new SoundPlayer[3];
+        #endregion propierty
+
+        public bool Mute = false;
+        public SoundController()
+        {
+            LoadSounds();
+            LoadMusic();
+        }
+        
+        private void LoadSounds()
         {
             Sounds[(int)SoundsTipos.Pay] = new SoundPlayer("Resources/Sounds/pay.wav");
             Sounds[(int)SoundsTipos.Card] = new SoundPlayer("Resources/Sounds/card.wav");
@@ -19,32 +28,28 @@ namespace TownBuilder.Helppers
                 sound.Load();
             }
         }
-        private static void LoadMusic()
+        private void LoadMusic()
         {
             BackgroundMusic.Open(new Uri("Resources/Sounds/farm.wav", UriKind.Relative));
             BackgroundMusic.MediaEnded += BackgroundMusic_Ended;
-            Replay();
+            PauseMusic();
         }
-        private static void BackgroundMusic_Ended(object? sender, EventArgs e)
+        private void BackgroundMusic_Ended(object? sender, EventArgs e)
         {
             BackgroundMusic.Position = TimeSpan.Zero;
-            Replay();
+            PauseMusic();
         }
-        public static void Load()
-        {
-            LoadSounds();
-            LoadMusic();
-        }
-        public static void Play(SoundsTipos tipo)
+
+        public void Play(SoundsTipos tipo)
         {
             new Thread(() => { Sounds[(int)tipo].Play(); }).Start();
         }
-        public static void Replay()
+        public void PlayMusic()
         {
             if (Mute) return;
             BackgroundMusic.Play();
         }
-        public static void Pause()
+        public void PauseMusic()
         {
             BackgroundMusic.Pause();
             BackgroundMusic.Stop();
